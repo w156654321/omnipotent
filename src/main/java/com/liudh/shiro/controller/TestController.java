@@ -24,7 +24,7 @@ public class TestController {
     @RequestMapping("/")
     public String index(){
 
-        UPermission permission = testService.selectAll();
+        UPermission permission = testService.insertTest();
         System.out.println(permission);
 
         return "index";

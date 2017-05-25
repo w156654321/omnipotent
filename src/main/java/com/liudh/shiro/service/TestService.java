@@ -8,5 +8,5 @@ import com.liudh.shiro.pojo.UPermission;
 
 public interface TestService {
 
-    public UPermission selectAll();
+    public UPermission insertTest();
 }
