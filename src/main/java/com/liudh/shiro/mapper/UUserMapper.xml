@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.taobao.mapper.UUserMapper" >
-  <resultMap id="BaseResultMap" type="com.taobao.pojo.UUser" >
+<mapper namespace="com.liudh.shiro.mapper.UUserMapper" >
+  <resultMap id="BaseResultMap" type="com.liudh.shiro.pojo.UUser" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List" >
     id, nickname, email, pswd, create_time, last_login_time, status
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.taobao.pojo.UUserExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liudh.shiro.pojo.UUserExample" >
     select
     <if test="distinct" >
       distinct
@@ -95,13 +95,13 @@
     delete from u_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.taobao.pojo.UUserExample" >
+  <delete id="deleteByExample" parameterType="com.liudh.shiro.pojo.UUserExample" >
     delete from u_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.taobao.pojo.UUser" >
+  <insert id="insert" parameterType="com.liudh.shiro.pojo.UUser" >
     insert into u_user (id, nickname, email, 
       pswd, create_time, last_login_time, 
       status)
@@ -109,7 +109,7 @@
       #{pswd,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.taobao.pojo.UUser" >
+  <insert id="insertSelective" parameterType="com.liudh.shiro.pojo.UUser" >
     insert into u_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -158,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.taobao.pojo.UUserExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.liudh.shiro.pojo.UUserExample" resultType="java.lang.Integer" >
     select count(*) from u_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -206,7 +206,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.taobao.pojo.UUser" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudh.shiro.pojo.UUser" >
     update u_user
     <set >
       <if test="nickname != null" >
@@ -230,7 +230,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.taobao.pojo.UUser" >
+  <update id="updateByPrimaryKey" parameterType="com.liudh.shiro.pojo.UUser" >
     update u_user
     set nickname = #{nickname,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},

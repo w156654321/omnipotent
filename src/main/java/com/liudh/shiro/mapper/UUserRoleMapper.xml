@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.taobao.mapper.UUserRoleMapper" >
-  <resultMap id="BaseResultMap" type="com.taobao.pojo.UUserRole" >
+  <resultMap id="BaseResultMap" type="com.liudh.shiro.pojo.UUserRole" >
     <result column="uid" property="uid" jdbcType="BIGINT" />
     <result column="rid" property="rid" jdbcType="BIGINT" />
   </resultMap>
@@ -66,7 +66,7 @@
   <sql id="Base_Column_List" >
     uid, rid
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.taobao.pojo.UUserRoleExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liudh.shiro.pojo.UUserRoleExample" >
     select
     <if test="distinct" >
       distinct
@@ -80,17 +80,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.taobao.pojo.UUserRoleExample" >
+  <delete id="deleteByExample" parameterType="com.liudh.shiro.pojo.UUserRoleExample" >
     delete from u_user_role
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.taobao.pojo.UUserRole" >
+  <insert id="insert" parameterType="com.liudh.shiro.pojo.UUserRole" >
     insert into u_user_role (uid, rid)
     values (#{uid,jdbcType=BIGINT}, #{rid,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.taobao.pojo.UUserRole" >
+  <insert id="insertSelective" parameterType="com.liudh.shiro.pojo.UUserRole" >
     insert into u_user_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="uid != null" >
@@ -109,7 +109,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.taobao.pojo.UUserRoleExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.liudh.shiro.pojo.UUserRoleExample" resultType="java.lang.Integer" >
     select count(*) from u_user_role
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />

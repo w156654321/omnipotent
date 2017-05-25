@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.taobao.mapper.URolePermissionMapper" >
-  <resultMap id="BaseResultMap" type="com.taobao.pojo.URolePermission" >
+<mapper namespace="com.liudh.shiro.mapper.URolePermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.liudh.shiro.pojo.URolePermission" >
     <result column="rid" property="rid" jdbcType="BIGINT" />
     <result column="pid" property="pid" jdbcType="BIGINT" />
   </resultMap>
@@ -66,7 +66,7 @@
   <sql id="Base_Column_List" >
     rid, pid
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.taobao.pojo.URolePermissionExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.liudh.shiro.pojo.URolePermissionExample" >
     select
     <if test="distinct" >
       distinct
@@ -80,17 +80,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.taobao.pojo.URolePermissionExample" >
+  <delete id="deleteByExample" parameterType="com.liudh.shiro.pojo.URolePermissionExample" >
     delete from u_role_permission
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.taobao.pojo.URolePermission" >
+  <insert id="insert" parameterType="com.liudh.shiro.pojo.URolePermission" >
     insert into u_role_permission (rid, pid)
     values (#{rid,jdbcType=BIGINT}, #{pid,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.taobao.pojo.URolePermission" >
+  <insert id="insertSelective" parameterType="com.liudh.shiro.pojo.URolePermission" >
     insert into u_role_permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="rid != null" >
@@ -109,7 +109,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.taobao.pojo.URolePermissionExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.liudh.shiro.pojo.URolePermissionExample" resultType="java.lang.Integer" >
     select count(*) from u_role_permission
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
