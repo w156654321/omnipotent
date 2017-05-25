@@ -1,5 +1,8 @@
 package com.liudh.shiro.controller;
 
+import com.liudh.shiro.pojo.UPermission;
+import com.liudh.shiro.service.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,8 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
 
+    @Autowired
+    private TestService testService;
+
     @RequestMapping("/")
     public String index(){
+
+        UPermission permission = testService.selectAll();
+        System.out.println(permission);
+
         return "index";
     }
 }
