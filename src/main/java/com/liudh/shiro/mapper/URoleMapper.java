@@ -29,4 +29,6 @@ public interface URoleMapper {
     int updateByPrimaryKeySelective(URole record);
 
     int updateByPrimaryKey(URole record);
+
+    List<URole> selectRoleByUserId(Long id);
 }

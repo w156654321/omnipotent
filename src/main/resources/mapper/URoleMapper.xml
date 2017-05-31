@@ -178,4 +178,10 @@
       type = #{type,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectRoleByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+     SELECT r.name FROM u_user_role ur
+     LEFT JOIN u_role r ON ur.rid = r.id
+     LEFT JOIN u_user u ON ur.uid = u.id
+     WHERE email = #{id}
+  </select>
 </mapper>

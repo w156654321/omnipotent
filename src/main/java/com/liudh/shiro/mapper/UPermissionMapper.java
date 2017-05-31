@@ -29,4 +29,7 @@ public interface UPermissionMapper {
     int updateByPrimaryKeySelective(UPermission record);
 
     int updateByPrimaryKey(UPermission record);
+
+    List<UPermission> selectPermissionByUserId(Long id);
+
 }

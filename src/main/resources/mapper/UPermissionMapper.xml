@@ -176,4 +176,12 @@
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectPermissionByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    SELECT p.id id,p.name name,p.url url
+    FROM  u_role_permission up
+    LEFT JOIN u_role r ON r.id = up.rid
+    LEFT JOIN u_permission p ON p.id = up.pid
+    WHERE r.id = #{id}
+  </select>
+
 </mapper>
