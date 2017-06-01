@@ -34,12 +34,12 @@ public class LoginRealm extends AuthorizingRealm {
     private RoleService roleService;
     @Autowired
     private PermissionService permissionService;
+
     /**
      * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals){
-
         UUser user = (UUser)SecurityUtils.getSubject().getPrincipal();
         Long userId = user.getId();
         SimpleAuthorizationInfo info =  new SimpleAuthorizationInfo();
@@ -50,9 +50,7 @@ public class LoginRealm extends AuthorizingRealm {
         Set<String> permList = permissionService.selectPermissionByUserId(userId);
         info.setStringPermissions(permList);
         return info;
-
     }
-
 
     /**
      * 认证回调函数, 登录时调用
@@ -74,8 +72,7 @@ public class LoginRealm extends AuthorizingRealm {
                 throw new AuthenticationException("msg:该已帐号禁止登录.");
             }
             AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user, user.getPswd(), this.getName());
-            this.setSession("currentUser", user.getEmail());
-
+            this.setSession("currentUser", user);
             return authcInfo;
         }
         return null;
