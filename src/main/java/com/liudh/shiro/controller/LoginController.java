@@ -43,7 +43,6 @@ public class LoginController {
     @RequestMapping("toLogin")
     public String toLogin(){
 //        UPermission permission = testService.insertTest();
-        System.out.println("111");
         return "login";
     }
     @RequestMapping(value = "login",method = RequestMethod.POST)
@@ -64,4 +63,12 @@ public class LoginController {
     public String main(){
         return "main";
     }
+
+    @RequestMapping("403")
+    public String error403(){
+//        UPermission permission = testService.insertTest();
+        System.out.println("111");
+        return "403";
+    }
+
 }
