@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,20 +27,26 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 @Controller
-public class TestController {
+@RequestMapping("user")
+public class LoginController {
 
     @Autowired
     private TestService testService;
 
     @RequestMapping("/")
     public String index(){
-
 //        UPermission permission = testService.insertTest();
-//        System.out.println(permission);
-
-        return "index";
+        System.out.println("111");
+        return "login";
     }
-    @RequestMapping("/login")
+
+    @RequestMapping("toLogin")
+    public String toLogin(){
+//        UPermission permission = testService.insertTest();
+        System.out.println("111");
+        return "login";
+    }
+    @RequestMapping(value = "login",method = RequestMethod.POST)
     public String login(HttpServletRequest request, Model model) throws Exception {
 
         String username = request.getParameter("username");
@@ -50,12 +57,11 @@ public class TestController {
         Subject currentUser = SecurityUtils.getSubject();
         currentUser.login(token);
 
-        return "main";
+        return "redirect:/user/main.do";
     }
 
-    @RequiresPermissions("user:create")
-    @RequestMapping("")
-    public void main(){
-        System.out.println("11");
+    @RequestMapping("main")
+    public String main(){
+        return "main";
     }
 }

@@ -7,7 +7,7 @@
     <result column="type" property="type" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultString" type="java.lang.String" >
-    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -182,7 +182,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectRoleByUserId" resultMap="ResultString" parameterType="java.lang.Long">
-     SELECT r.name FROM u_user_role ur
+     SELECT r.type  FROM u_user_role ur
      LEFT JOIN u_role r ON ur.rid = r.id
      LEFT JOIN u_user u ON ur.uid = u.id
      WHERE u.id = #{id}

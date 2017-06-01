@@ -11,7 +11,7 @@
     <title>首页</title>
 </head>
 <body>
-        <form action="/login" method="post">
+        <form action="/user/login.do" method="post">
         账号：<input type="text" name="username" ><br>
         密码：<input type="text" name="password" ><br>
          <input type="submit" value="登陆">

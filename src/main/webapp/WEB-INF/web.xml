@@ -56,7 +56,7 @@
       </servlet>
       <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>*.do</url-pattern>
       </servlet-mapping>
 
       <!--springmvc与favicon.ico的配置-->
@@ -66,6 +66,6 @@
       </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file/>
-      </welcome-file-list>
+        <welcome-file>/user/.do</welcome-file>
+    </welcome-file-list>
 </web-app>

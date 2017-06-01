@@ -12,11 +12,12 @@
     <title>Title</title>
 </head>
 <body>
+
    当前用户：${currentUser.email}${currentUser.nickname}
    <shiro:hasPermission name="/role/aaa.shtml">
        <p>你有权限看到此处!</p>
    </shiro:hasPermission>
-   <shiro:hasRole name="系统管理员">
+   <shiro:hasRole name="admin">
        <p>系统管理员权限看到此处!</p>
    </shiro:hasRole>
 

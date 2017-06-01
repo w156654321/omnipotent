@@ -26,8 +26,7 @@ public class TestServiceImpl implements TestService {
         UPermission permission = new UPermission();
         permission.setName("asdasdasd");
         uPermissionMapper.insert(permission);
-      throw new RuntimeException("发生了异常");
-
-//        return uPermission;
+        throw new RuntimeException("发生了异常");
+//      return uPermission;
     }
 }
