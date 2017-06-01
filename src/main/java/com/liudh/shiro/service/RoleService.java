@@ -1,12 +1,11 @@
 package com.liudh.shiro.service;
 
-import com.liudh.shiro.pojo.URole;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by liudh on 2017/5/28.
  */
 public interface RoleService {
 
-    List<URole> selectRoleByUserId(Long userId);
+    Set<String> selectRoleByUserId(Long userId);
 }

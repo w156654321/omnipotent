@@ -1,6 +1,9 @@
 package com.liudh.shiro.realm;
 
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.liudh.shiro.pojo.UPermission;
 import com.liudh.shiro.pojo.URole;
@@ -36,33 +39,17 @@ public class LoginRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals){
-        //获取当前登录的用户名,等价于(String)principals.fromRealm(this.getName()).iterator().next()
-        String currentUsername = (String)super.getAvailablePrincipal(principals);
-        UUser user = userService.getUserByName(currentUsername);
-        if(user == null){
-            throw new AuthenticationException("msg:用户不存在。");
-        }
-        SimpleAuthorizationInfo simpleAuthorInfo = new SimpleAuthorizationInfo();
 
-        List<URole> roleList = roleService.selectRoleByUserId(user.getId());
-        List<UPermission> permList = permissionService.selectPermissionByUserId(user.getId());
-
-        if(roleList != null && roleList.size() > 0){
-            for(URole role : roleList){
-                if(role.getName() != null){
-                    simpleAuthorInfo.addRole(role.getName());
-                }
-            }
-        }
-
-        if(permList != null && permList.size() > 0){
-            for(UPermission perm : permList){
-                if(perm.getUrl()!= null){
-                    simpleAuthorInfo.addStringPermission(perm.getUrl());
-                }
-            }
-        }
-        return simpleAuthorInfo;
+        UUser user = (UUser)SecurityUtils.getSubject().getPrincipal();
+        Long userId = user.getId();
+        SimpleAuthorizationInfo info =  new SimpleAuthorizationInfo();
+        //根据用户ID查询角色（role），放入到Authorization里。
+        Set<String> roleList = roleService.selectRoleByUserId(userId);
+        info.setRoles(roleList);
+        //根据用户ID查询权限（permission），放入到Authorization里。
+        Set<String> permList = permissionService.selectPermissionByUserId(userId);
+        info.setStringPermissions(permList);
+        return info;
 
     }
 
@@ -86,13 +73,12 @@ public class LoginRealm extends AuthorizingRealm {
             if(user.getStatus() !=null && user.getStatus() == 0){
                 throw new AuthenticationException("msg:该已帐号禁止登录.");
             }
-            AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getEmail(), user.getPswd(), this.getName());
+            AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user, user.getPswd(), this.getName());
             this.setSession("currentUser", user.getEmail());
 
             return authcInfo;
         }
         return null;
-
     }
 
     /**

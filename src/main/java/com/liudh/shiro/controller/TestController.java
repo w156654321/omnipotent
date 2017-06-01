@@ -6,6 +6,7 @@ import com.liudh.shiro.util.MdUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.UnauthorizedException;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,12 @@ public class TestController {
         Subject currentUser = SecurityUtils.getSubject();
         currentUser.login(token);
 
-        return "index";
+        return "main";
+    }
+
+    @RequiresPermissions("user:create")
+    @RequestMapping("")
+    public void main(){
+        System.out.println("11");
     }
 }

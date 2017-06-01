@@ -1,6 +1,7 @@
 package com.liudh.shiro.mapper;
 
 import java.util.List;
+import java.util.Set;
 
 import com.liudh.shiro.pojo.UPermission;
 import com.liudh.shiro.pojo.UPermissionExample;
@@ -30,6 +31,6 @@ public interface UPermissionMapper {
 
     int updateByPrimaryKey(UPermission record);
 
-    List<UPermission> selectPermissionByUserId(Long id);
+    Set<String> selectPermissionByUserId(Long id);
 
 }

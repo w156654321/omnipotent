@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by liudh on 2017/5/28.
@@ -20,8 +21,8 @@ public class PermissionServiceImpl  implements PermissionService {
     @Autowired
     private UPermissionMapper permissionMapper;
 
-    public List<UPermission> selectPermissionByUserId(Long userId) {
-        List<UPermission> list = permissionMapper.selectPermissionByUserId(userId);
-        return list;
+    public Set<String> selectPermissionByUserId(Long userId) {
+        Set<String> set = permissionMapper.selectPermissionByUserId(userId);
+        return set;
     }
 }

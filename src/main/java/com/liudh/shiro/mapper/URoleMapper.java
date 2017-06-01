@@ -1,10 +1,11 @@
 package com.liudh.shiro.mapper;
 
-import java.util.List;
-
 import com.liudh.shiro.pojo.URole;
 import com.liudh.shiro.pojo.URoleExample;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Set;
 
 public interface URoleMapper {
 
@@ -30,5 +31,5 @@ public interface URoleMapper {
 
     int updateByPrimaryKey(URole record);
 
-    List<URole> selectRoleByUserId(Long id);
+    Set<String> selectRoleByUserId(Long id);
 }

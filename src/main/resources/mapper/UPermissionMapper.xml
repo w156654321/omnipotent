@@ -6,6 +6,9 @@
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="BaseResultUrl" type="java.lang.String" >
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -176,8 +179,8 @@
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectPermissionByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long">
-    SELECT p.id id,p.name name,p.url url
+  <select id="selectPermissionByUserId" resultMap="BaseResultUrl" parameterType="java.lang.Long">
+    SELECT p.url
     FROM  u_role_permission up
     LEFT JOIN u_role r ON r.id = up.rid
     LEFT JOIN u_permission p ON p.id = up.pid
