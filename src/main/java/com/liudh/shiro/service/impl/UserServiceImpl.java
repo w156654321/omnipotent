@@ -6,6 +6,7 @@ import com.liudh.shiro.pojo.UUserExample;
 import com.liudh.shiro.pojo.UUserExample.Criteria;
 import com.liudh.shiro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import java.util.List;
  */
 @Transactional
 @Service
+@Component("userServiceImpl")
 public class UserServiceImpl implements UserService {
 
     @Autowired
